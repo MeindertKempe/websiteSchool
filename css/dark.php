@@ -3,7 +3,8 @@
 	$green = "#008000"
 ?>
 
-//fix for annoying highlighting in editor
+/*fix for annoying highlighting in editor*/
+
 /*
 <style>
 /**/
