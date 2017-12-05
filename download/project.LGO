@@ -1,0 +1,670 @@
+to a
+;Note borderColour is broken for Spades and Clubs
+;Yes the system for passing card values is stupid, I did this because it would allow me to store a card as a single variable
+;in hindsight however that was stupid I could have just make a list and stored both suit and number in there it would still 
+;have been one variable in that case. I really don't have time to change this anymore though so i will just leave it like this.
+;
+;
+end
+
+to card
+ClearScreen
+localMake "size 100
+localMake "tempSuit listboxGetSelect "suitList ;use temporary values to avoid annoying behaviour
+localMake "tempValue listboxGetSelect "numList
+drawCard :size [245 245 220] 0
+
+if :tempValue = [Ace] [
+	localMake "value 1
+]
+if :tempValue= [Jack] [
+	localMake "value 11
+]
+if :tempValue= [Queen] [
+	localMake "value 12
+]
+if :tempValue= [King] [
+	localMake "value 13
+]
+
+;workaround for idiotic behaviour (difference between [x] and x and no way to convert between them or compare [x] using < or >)
+if :tempValue= [2] [
+	localMake "value 2
+]
+if :tempValue= [3] [
+	localMake "value 3
+]
+if :tempValue= [4] [
+	localMake "value 4
+]
+if :tempValue= [5] [
+	localMake "value 5
+]
+if :tempValue= [6] [
+	localMake "value 6
+]
+if :tempValue= [7] [
+	localMake "value 7
+]
+if :tempValue= [8] [
+	localMake "value 8
+]
+if :tempValue= [9] [
+	localMake "value 9
+]
+if :tempValue= [10] [
+	localMake "value 10
+]
+
+if :tempSuit = [Spades] [
+	localMake "suit 1
+	localMake "value :value
+]
+if :tempSuit = [Hearts] [
+	localMake "suit 2
+	localMake "value :value+13
+]
+if :tempSuit = [Clubs] [
+	localMake "suit 3
+	localMake "value :value+26
+]
+if :tempSuit = [Diamonds] [
+	localMake "suit 4
+	localMake "value :value+39
+]
+drawValue :size :value
+end
+
+to control
+setpos [0 0]
+setheading 0
+windowCreate "main "controlWindow "Control 100 100 92 138 []
+staticCreate "controlWindow "numText [Select Card] 3 3 40 10
+
+;create input lists
+
+listboxCreate "controlWindow "numList 3 13 40 110
+
+listboxAddString "numList [Ace]
+for [i 2 10 1][
+listboxAddString "numList :i
+]
+listboxAddString "numList [Jack]
+listboxAddString "numList [Queen]
+listboxAddString "numList [King]
+
+staticCreate "controlWindow "suitText [Select Suit] 46 3 40 10
+listboxCreate "controlWindow "suitList 46 13 40 40
+listboxAddString "suitList [Spades]
+listboxAddString "suitList [Hearts]
+listboxAddString "suitList [Clubs]
+listboxAddString "suitList [Diamonds]
+
+;create control buttons
+
+buttonCreate "controlWindow "drawCardButton [Draw] 46 53 40 15 [card]
+buttonCreate "controlWindow "clearScreenButton [Clear] 46 68 40 15 [clearScreen]
+buttonCreate "controlWindow "closeControlButton [Close] 46 83 40 15 [windowDelete "controlWindow]
+staticCreate "controlWindow "infoText [Type control to open this window] 46 98 40 40
+end
+
+to draw1
+drawSuit :defSize*:size :suit
+end
+
+to draw10
+draw84 8
+draw2
+end
+
+to draw2
+localmake "pos pos ;save position
+pu
+setheading 0
+fd (1.6)*((:size*2)/7)
+drawSuit :defSize*:size :suit
+pu
+bk (1.6)*((:size*2)/7)*2
+drawSuit :defSize*:size :suit
+pu
+setpos :pos ;restore position
+end
+
+to draw3
+draw1
+draw2
+end
+
+to draw5
+draw1
+draw84 4
+end
+
+to draw6
+localmake "pos pos
+localmake "heading heading
+for [i 1 6 1][
+	pu
+	if or :i = 1 :i = 5 [
+		lt :angle
+	]
+	if :i = 4 [
+		lt :angle+180
+	]
+	if or :i = 2 :i = 6[
+		rt :angle
+	]
+	if :i = 3 [
+		rt :angle+180
+	]
+	fd :distance*:size*1.75
+	drawSuit :defSize*:size :suit
+	pu
+	if or :i = 5 :i = 6 [
+		if :suit = 1 [
+			localMake "tempSize 2.25
+		]
+		if :suit = 2 [
+			localMake "tempSize 1.9	
+		]
+		if or :suit = 3 :suit = 4 [
+			localMake "tempSize 2
+		]
+		setheading 180
+		fd ((:size*2)/7)*:tempSize
+		drawSuit :defSize*:size :suit
+	]
+	pu
+	setpos :pos
+	setheading :heading
+]
+end
+
+to draw7
+draw1
+draw6
+end
+
+to draw84 :num
+localmake "pos pos
+localmake "heading heading
+for [i 1 4 1][
+	pu
+	if :i = 1 [
+		lt :angle
+	]
+	if :i = 4 [
+		lt :angle+180
+	]
+	if :i = 2 [
+		rt :angle
+	]
+	if :i = 3 [
+		rt :angle+180
+	]
+	fd :distance*:size*1.75
+	drawSuit :defSize*:size :suit
+	pu
+	if :num = 8 [
+		if :suit = 1 [		;account for differences in drawing
+			localMake "tempSize 1.7
+		]
+		if :suit = 2 [
+			localMake "tempSize 1.3
+		]
+		if or :suit = 3 :suit = 4 [
+			localMake "tempSize 1.5
+
+		]
+		if or :i = 1 :i = 2 [
+			setheading 180
+			fd ((:size*2)/7)*(2+(1/3)-1.4)*:tempSize
+			
+		]
+		if or :i = 3 :i = 4 [
+			setheading 0
+			fd ((:size*2)/7)*(2+(1/3)-1.4)*1.5
+		]
+	drawSuit :defSize*:size :suit
+	]
+	pu
+	setpos :pos
+	setheading :heading
+]
+end
+
+to draw9
+draw1
+draw84 8
+end
+
+to drawCard :height :colour :borderColour
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+localmake "height :height/3.5
+pu
+setheading 270
+fd 2.5*:height ;poker size card is 2.5 inches wide and 3.5 inches tall so a ratio of 5:7
+rt 90
+setpc :borderColour
+pd
+repeat 2 [
+	fd 3.5*:height
+	rt 90
+	fd 5*:height
+	rt 90
+	fd 3.5*:height
+]
+pu
+setpos :pos ;restore position
+setheading :heading ;restore heading
+setfc :colour ;set card colour
+pennormal
+fill
+end
+
+to drawClub :height :colour :borderColour
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+localmake "height :height*.7 ;make certain height is in line with other functions
+localmake "size :height*0.5
+setheading 0
+pu
+;fd 1.2*:height ;shift drawing upwards
+localmake "center pos
+setpc :borderColour
+setfc :colour
+for [i 1 3 1] [ ;draw 3 circles
+	rt 120
+	fd :size/(sin 60)
+	ellipsem :size+:size/100 :size+:size/100 360 0 ;slightly overlap circles to avoid gaps
+	fill
+	if :i = 1 [
+		ellipsem 0.45*:height 0.9*:height 90 180
+		localmake "tempHeading heading
+		rt 60
+		pu
+		fd 0.9*:height
+		rt 90
+		pd
+		fd :size*2
+		setheading :tempHeading
+	] 
+	if :i = 2 [
+		ellipsem 0.45*:height 0.9*:height 90 270
+	]
+	pu
+	setpos :center
+]
+fill
+bk :height
+fill
+setpos :pos ;restore position
+setheading :heading ;restore heading
+pennormal
+end
+
+to drawDiamond :height :colour :borderColour
+localmake "width (tan 25)*:height ;calculate lenght of sides and width (half of width)
+localmake "side :height/cos(25) 
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+for [i 0 180 180] [
+	for [x 0 1 1] [
+		pu
+		setpos :pos
+		setheading :i+90
+		fd :width
+		setpc :borderColour
+		pd
+		if :x = 0 [
+			lt 115
+			fd :side
+		] 
+		if :x = 1 [
+			rt 115
+			fd :side
+		]
+	]
+] ;draw sides of diamond
+pu
+setpos :pos ;restore position
+setfc :colour
+fill
+setheading :heading ;restore heading
+pennormal
+pd
+end
+
+to drawHeart :height :colour :borderColour
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+localmake "height :height/6 ;make certain height is in line with other functions
+localmake "width 3.8
+pu
+fd 1.2*:height ;shift drawing upwards
+localmake "center pos
+setpc :borderColour
+for [i 0 180 180] [
+	pu
+	setheading :i+90
+	if :i = 0 [
+		fd 0.5*:width*:height
+	]
+	if :i = 180 [
+		fd :width*:height	
+	]
+	pd
+	ellipsem 0.5*:width*:height 0.5*:width*:height 180 0
+	pu
+]
+setpos :center
+ellipsem :width*:height 6*:height 180 180
+pu
+bk 1
+setfc :colour
+fill
+setpos :pos ;restore position
+setheading :heading ;restore heading
+pennormal
+pd
+end
+
+to drawNumber :number :suit
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+localmake "testNumber1 and not :number=1 not :number=11
+localmake "testNumber2 and not :number=12 not :number=13
+pu
+ifelse or :suit=1 :suit=3 [
+	setpc 0
+][ 
+	setpc 4
+]
+for [i 0 180 180][
+	setlabelfont [[Times New Roman] -24 0 0 400 0 0 0 0 3 2 1 18]
+	setheading 0
+	lt :angle+:i
+	localmake "test :i
+	if :number = 11 [
+		moveForLettersJ
+		label [J]
+	]
+	if :number = 12 [
+		moveForLettersQ
+		label [Q]
+	]
+	if :number = 13 [
+		moveForLettersK
+		label [K]
+	]
+
+	if :number = 1 [
+		ifelse :i=0 [
+			fd :distance*:size*2.9
+		][
+			fd ((:distance*:size*2.7)-((tan(:angle))*24)) 	;solves problem caused by label placement
+			localmake "tempheading heading			;yes this is horrible but ain't nobody got time for a proper fix
+			setheading 0
+			fd :size*0.05
+			setheading :tempheading
+		]
+		setheading 90
+		label [A]
+	]
+
+	if and :testNumber1 :testNumber2 [
+		ifelse :i=0 [
+			fd :distance*:size*2.9
+		][
+			fd ((:distance*:size*2.7)-((tan(:angle))*24)) 	;solves problem caused by label placement
+			localmake "tempheading heading			;yes this is horrible but ain't nobody got time for a proper fix
+			setheading 0						;also 10 is somewhat of but i can't be bothered to do something about that
+			fd :size*0.05
+			setheading :tempheading
+		]	
+		setheading 90
+		label :number
+	]
+	setpos :pos
+]
+pd
+setpos :pos ;restore position
+setheading :heading ;restore heading
+end
+
+to drawSpade :height :colour :borderColour
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+localmake "height :height/6 ;make certain height is in line with other functions
+localmake "width 3.8
+pu
+bk 1.2*:height ;shift drawing downwards
+localmake "center pos
+setpc :borderColour
+for [i 0 180 180] [
+	pu
+	setheading :i+90
+	if :i = 0 [
+		fd 0.5*:width*:height
+		ellipsem 0.45*:width*:height 0.8*:width*:height 90 180
+	]
+	if :i = 180 [
+		setheading :i
+		fd 0.8*:width*:height
+		pd
+		setheading :i+90
+		fd :width*:height
+		pu
+		setheading :i+180
+		fd 0.8*:width*:height
+		ellipsem 0.45*:width*:height 0.8*:width*:height 90 270
+		pu	
+	]
+	pd
+	ellipsem 0.5*:width*:height 0.5*:width*:height 180 180
+	pu
+]
+setpos :center
+ellipsem :width*:height 6*:height 180 0
+pu
+setheading 0
+setfc :colour
+fd 1 ;fill everything
+fill
+bk 1+:height
+fill
+setpos :pos ;restore position
+setheading :heading ;restore heading
+pennormal
+pd
+
+end
+
+to drawSuit :size :suit
+if :suit = 1 [
+	drawSpade :size 0 0
+]
+if :suit = 2 [
+	drawHeart :size 4 4
+]
+if :suit = 3 [
+	drawClub :size 0 0
+]
+if :suit = 4 [
+	drawDiamond :size 4 4
+]
+end
+
+to drawValue :size :value ;find out suit and call drawValue2 for actual drawing
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+; Suits 
+; spades 	= +0
+; hearts 	= +13
+; clubs 	= +26
+; diamonds	= +39
+; Values
+; 1 = ace
+; 11 = jack
+; 12 = queen
+; 13 = king
+if :value<14 [
+	drawValue2 :size :value 1
+]
+if and :value>13 :value<27 [
+	drawValue2 :size :value 2
+]
+if and :value>26 :value<40[
+	drawValue2 :size :value 3
+]
+if :value>39[
+	drawValue2 :size :value 4
+]
+
+
+end
+
+to drawValue2 :size :value :suit ;find value and draw values
+localmake "pos pos ;save current position
+localmake "heading heading ;save current heading
+localmake "angle arctan 1.25/2.1
+localmake "distance sqrt (((1.25/5)*(1.25/5))+((2.1/7)*(2.1/7)))
+localmake "defSize .2	;changes the size of the suits for normal numbersnot hardcoding this is useful for debugging
+
+; Suit
+; spades	= 1
+; hearts	= 2
+; clubs	= 3
+; diamonds	= 4
+
+if :suit = 1 [
+	localmake "value :value
+]
+if :suit = 2 [
+	localmake "value :value-13
+]
+if :suit = 3 [
+	localmake "value :value-26
+]
+if :suit = 4 [
+	localmake "value :value-39
+]
+
+
+if :value = 1 [
+	drawSuit 0.5*:size :suit
+]
+if :value = 2 [
+	draw2
+]
+if :value = 3 [
+	draw3
+]
+if :value = 4 [
+	draw84 4
+]
+if :value = 5 [
+	draw5
+]
+if :value = 6 [
+	draw6
+]
+if :value = 7 [
+	draw7
+]
+if :value = 8 [
+	draw84 8
+]
+if :value = 9 [
+	draw9
+]
+if :value = 10 [
+	draw10
+]
+if :value = 11 [
+	draw1
+]
+if :value = 12 [
+	draw1
+]
+if :value = 13 [
+	draw1
+]
+drawNumber :value :suit
+pu
+setpos :pos ;restore position
+setheading :heading ;restore heading
+end
+
+to ellipsem :radx :rady :sweep :angle
+localmake "pos pos
+localmake "addx item 1 :pos
+localmake "addy item 2 :pos
+local "x
+local "y
+pu
+for [i 0 :sweep] [
+	make "x :radx*(cos :angle)+:addx
+	make "y :rady*(sin :angle)+:addy
+	setxy :x :y
+	pd
+	make "angle :angle+1
+]
+pu 
+setpos :pos
+pd
+end
+
+to moveCard :distance :speed
+repeat :distance [
+	drawcard 30 7 0 ;draw card
+	wait :speed
+	drawcard 30 10 10 ;erase card
+	pu
+	fd 1 ;actually move
+	pd
+]
+drawcard 30 7 0
+end
+
+to moveForLettersJ
+setlabelfont [[Times New Roman] -100 0 0 400 0 0 0 0 3 2 1 18]
+ifelse :test=0 [
+	fd :distance*:size*2.9
+][
+	localmake "tempheading heading
+	setheading 90
+	fd :size*0.2
+	setheading :tempheading
+]
+setheading 90
+end
+
+to moveForLettersK
+setlabelfont [[Times New Roman] -70 0 0 400 0 0 0 0 3 2 1 18]
+ifelse :test=0 [
+	fd :distance*:size*2.9
+][ 									
+	fd (:distance*:size*0.7)			 	;solves problem caused by label placement
+	localmake "tempheading heading			;yes this is horrible but ain't nobody got time for a proper fix		
+]
+setheading 90
+end
+
+to moveForLettersQ
+setlabelfont [[Times New Roman] -70 0 0 400 0 0 0 0 3 2 1 18]
+if :test=0 [
+	fd :distance*:size*2.9
+]												
+setheading 90
+end
+
+to startup
+setsc 10
+ht
+fence
+control
+end
+
+Make "startup [startup]
