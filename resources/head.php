@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/common.php">
 <link rel="stylesheet" type="text/css" href="css/dark.php" title="dark">
 <link rel="stylesheet" type="text/css" href="css/light.php" title="light">
-<script src="script/theme.js"></script>
+<script src="scripts/theme.js"></script>
 <style>
 	<?php 
 		$currentPage = basename($_SERVER['PHP_SELF'], '.php');
