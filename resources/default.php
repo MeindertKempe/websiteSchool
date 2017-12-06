@@ -14,7 +14,7 @@
 		</div>
 		<section id="content" class="box">
 			<?php
-				$currentPage = str_replace('.php', 'Content.php', basename($_SERVER['PHP_SELF']));
+				$currentPage = str_replace('.php', 'Content.php', basename(filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL)));
 				if (file_exists(getcwd() . '/content/' . $currentPage)) {
 					include('content/' . $currentPage);
 				} else {

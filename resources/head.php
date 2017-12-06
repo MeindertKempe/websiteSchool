@@ -4,7 +4,7 @@
 		if($title !== null){
 			echo($title);
 		} else {
-			echo('error');
+			echo('');
 		}
 	?>
 </title>
@@ -16,7 +16,7 @@
 <script src="scripts/theme.js"></script>
 <style>
 	<?php 
-		$currentPage = basename($_SERVER['PHP_SELF'], '.php');
+		$currentPage = basename(filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL), '.php');
 		echo('#'.$currentPage.' {
 			background-color: #004800;
 		}');
