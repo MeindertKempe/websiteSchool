@@ -181,6 +181,26 @@ h3 {
 	width: 45%;
 }
 
+.loginText {
+	display: inline-block;
+	width: 15%;
+}
+
+.loginField {
+	height: 1.5em;
+	width: 25%;
+	border-style: solid;
+	border-radius: 3px;
+}
+
+.loginButton {
+	margin-top: 0.5%;
+	width: 10%;
+	height: 1.5em;
+	border-style: solid;
+	border-radius: 3px;
+}
+
 #footer {
 	position: absolute;
 	bottom: 0;

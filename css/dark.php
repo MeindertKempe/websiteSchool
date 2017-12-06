@@ -69,7 +69,7 @@
 	color: #606060;
 }
 
-.downloadButton {
+.downloadButton, .loginButton, .loginField {
 	color: <?=$green;?>;
 	background-color: #101010;
 	border-color: <?=$green;?>;
