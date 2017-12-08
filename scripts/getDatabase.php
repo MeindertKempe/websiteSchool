@@ -1,12 +1,17 @@
 <?php
 
+function getDatabase($dbName, $include)
+{
+
 /*
- * You need to set the $chdir variable so that it goes to the webroot
- * 
- * You also need to specify the table before including this script
+ * The $include variable needs to point to config/getLoginData.php
  */
 
-chdir($chdir);
-include('config/getlogindata.php');
-$db = mysqli_connect('localhost', $username, $password, $table);
+	// Include file in which $username and $password are declared
+	include($include);
+	
+	// Connect to a mySQL database and return it
+	return mysqli_connect('localhost', $username, $password, $dbName);
+}
+
 ?>
