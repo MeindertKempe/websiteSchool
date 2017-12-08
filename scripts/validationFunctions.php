@@ -39,4 +39,5 @@ function validatePassword($password, $confirmPassword)
 		return true;
 	}
 }
+
 ?>
