@@ -1,7 +1,6 @@
 <?php
 include('scripts/registerScript.php')
 ?>
-
 <h1 class="h1">Register</h1>
 <br>
 
