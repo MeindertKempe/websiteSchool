@@ -1,6 +1,6 @@
 <?php
-	header("Content-type: text/css");
-	$green = "#008000;"
+header("Content-type: text/css");
+$green = "#008000;"
 ?>
 
 /*fix for annoying highlighting in editor*/

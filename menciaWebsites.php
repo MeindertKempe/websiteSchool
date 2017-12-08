@@ -1,4 +1,4 @@
 <?php
-	$title = 'Mencia Websites';
-	include('resources/default.php');
+$title = 'Mencia Websites';
+include('resources/default.php');
 ?>

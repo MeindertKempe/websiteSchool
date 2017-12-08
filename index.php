@@ -1,4 +1,4 @@
 <?php
-	$title = 'Home';
-	include('resources/default.php');
+$title = 'Home';
+include('resources/default.php');
 ?>

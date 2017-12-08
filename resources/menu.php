@@ -3,7 +3,7 @@
 </div>
 <nav id="navMenuContainer">
 	<?php
-		include('resources/navMenu.php');
+	include('resources/navMenu.php');
 	?>
 </nav>
 <div id="themeDiv">
@@ -13,6 +13,6 @@
 </div>
 <footer id="footer">
 	<?php
-		include('resources/footer.php');
+	include('resources/footer.php');
 	?>
 </footer>

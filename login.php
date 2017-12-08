@@ -1,4 +1,4 @@
 <?php
-	$title = 'Login';
-	include('resources/default.php')
+$title = 'Login';
+include('resources/default.php')
 ?>

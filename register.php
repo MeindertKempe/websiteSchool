@@ -1,4 +1,4 @@
 <?php
-	$title = 'Register';
-	include('resources/default.php');
+$title = 'Register';
+include('resources/default.php');
 ?>
