@@ -1,32 +1,18 @@
 "use strict";
-/*
-function changeTheme(theme) {
+
+function changeTheme(theme)
+{
 	let linkList = document.getElementsByTagName("link");
-	for (let i = 0; i < linkList.length; i++) {
+	for (let i = 0; i < linkList.length; i++)
+	{
 		let title = linkList[i].getAttribute("title");
-		if (title === theme) {
-			//linkList[i].removeAttribute('disabled');
-			linkList[i].disabled = false;
-			console.log(theme + "enabled")
-		} else if (title !== null) {
-			//linkList[i].setAttribute('disabled','');
-			linkList[i].disabled = true;
-			console.log("all disabled")
-		}
-	}
-	setCookie("theme", theme, 10);
-	return theme;
-}
-*/
-function changeTheme(theme) {
-	let linkList = document.getElementsByTagName("link");
-	for (let i = 0; i < linkList.length; i++) {
-		let title = linkList[i].getAttribute("title");
-		if (title !== null) {
+		if (title !== null)
+		{
 			linkList[i].disabled = true;
 			setCookie("theme", theme, 10);
 		}
-		if (title === theme) {
+		if (title === theme)
+		{
 			linkList[i].disabled = false;
 		}
 	}
@@ -38,21 +24,29 @@ function setCookie(cookieName, cookieValue, cookieMaxAge) {
 	return document.cookie;
 }
 
-function getCookie(cookieName) {
+function getCookie(cookieName)
+{
 	let cookieValue = document.cookie.match(new RegExp(cookieName + "=([^;]+)"));
-	if (cookieValue !== null) {
+	if (cookieValue !== null)
+	{
 		return cookieValue[1];
-	} else {
+	}
+	else
+	{
 		return null;
 	}
 }
 
-function setTheme() {
+function setTheme()
+{
 	let theme = getCookie("theme");
-	if (theme !== null) {
+	if (theme !== null)
+	{
 		changeTheme(theme);
 		return theme;
-	} else {
+	}
+	else
+	{
 		changeTheme("dark");
 		return "dark";
 	}
