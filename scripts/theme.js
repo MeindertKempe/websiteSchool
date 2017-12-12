@@ -1,24 +1,20 @@
 "use strict";
 
-function changeTheme(theme)
-{
+function changeTheme(theme) {
 	// Assign all link elements to a array
 	let linkList = document.getElementsByTagName("link");
 	// Cycle through the array to check all elements
-	for (let i = 0; i < linkList.length; i++)
-	{
+	for (let i = 0; i < linkList.length; i++) {
 		// Get the title attribute of the element
 		let title = linkList[i].getAttribute("title");
 		/*
 		 * Disable all elements exept those without title (with title null)
 		 * and then enable the element which matches the theme variable
 		 */
-		if (title !== null)
-		{
+		if (title !== null) {
 			linkList[i].disabled = true;
 		}
-		if (title === theme)
-		{
+		if (title === theme) {
 			linkList[i].disabled = false;
 			// Set a cookie as to be able to identify the last theme used
 			setCookie("theme", theme, 10);
@@ -28,8 +24,7 @@ function changeTheme(theme)
 	return theme;
 }
 
-function setCookie(cookieName, cookieValue, cookieMaxAge) 
-{
+function setCookie(cookieName, cookieValue, cookieMaxAge) {
 	/*
 	 * Use document.cookie to set a cookie with the specified values
 	 * and return it.
@@ -39,8 +34,7 @@ function setCookie(cookieName, cookieValue, cookieMaxAge)
 	return document.cookie;
 }
 
-function getCookie(cookieName)
-{
+function getCookie(cookieName) {
 	/*
 	 * Use regex to find the cookie with the right name
 	 * and assign its value to a variable
@@ -50,31 +44,26 @@ function getCookie(cookieName)
 	 * Check if the cookie has an actual value, if so return it, 
 	 * if not return null
 	 */
-	if (cookieValue !== null)
-	{
+	if (cookieValue !== null) {
 		return cookieValue[1];
 	}
-	else
-	{
+	else {
 		return null;
 	}
 }
 
 // This script is run on page load to set the correct theme
-function setTheme()
-{
+function setTheme() {
 	// Get value of the theme cookie and store it
 	let theme = getCookie("theme");
 	/*
 	 *  Check if the theme cookie has a value, if so set that theme 
 	 *  with changeTheme, if not use the default value
 	 */
-	if (theme !== null)
-	{
+	if (theme !== null) {
 		changeTheme(theme);
 	}
-	else
-	{
+	else {
 		changeTheme("dark");
 	}
 }
