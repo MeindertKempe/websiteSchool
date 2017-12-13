@@ -14,5 +14,3 @@ function getDatabase($hostname, $dbName)
 	// Connect to a mySQL database and return it
 	return mysqli_connect($hostname, $username, $password, $dbName);
 }
-
-?>
