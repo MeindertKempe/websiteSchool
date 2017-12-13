@@ -59,12 +59,12 @@ if(filter_input(INPUT_GET, 'passLengthErr', FILTER_SANITIZE_URL) === 'true')
 	   ?>">
 	<br>
 	
-	<label class="loginText" for="password">Password:</label>
-	<input id="password" class="loginField" type="password" name="password" 
+	<label class="loginText" for="password">Password:</label><!--
+	--><input id="password" class="loginField" type="password" name="password" 
 		   maxlength="255" minlength="4"><br>
 	
-	<label class="loginText" for="confirmPassword">Confirm password:</label>
-	<input id="confirmPassword" class="loginField" type="password" name="confirmPassword" 
+	<label class="loginText" for="confirmPassword">Confirm password:</label><!--
+	--><input id="confirmPassword" class="loginField" type="password" name="confirmPassword" 
 		   maxlength="255" minlength="4"><br>
 	
 	<input class="loginButton" type="submit" value="register">
