@@ -1,79 +1,93 @@
 <?php
 
 // Require necessary files
-require('scripts/validationFunctions.php');
-
-// Define error messages
-$invalidUsernameErrMsg = '<p class="errorMsg">Kies een Gebruikersnaam tussen de 4 en 127 karakters en gebruik alleen letters en cijfers.</p>';
-$invalidEmailErrMsg = '<p class="errorMsg">Geef een gelig email adres op.</p>';
-$passwordDiffErrMsg = '<p class="errorMsg">Geef twee keer het zelfde wachtwoord op.</p>';
-$passwordLengthErrMsg = '<p class="errorMsg">Kies een wachtwoord tussen de 4 en 255 karakters.</p>';
+require('validationFunctions.php');
 
 // Declare error variables
-$invalidUsernameErr = $invalidEmailErr = $passwordDiffErr = $passwordLengthErr = '';
+$usernameErr = $emailErr = $passDiffErr = $passLengthErr = '';
+
+// Declare variables which indicate validation state
+
+$usernameValidate = $emailValidate = $passValidate = false;
 
 // Check whether the server received anything via POST
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
+	// Assign POST data to variables
+	
+	$username = $_POST['username'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$confirmPassword = $_POST['confirmPassword'];
 	
 	/*
-	 * Check whether it passes username requirements and process it,
+	 * Check whether it passes username requirements and assign a variable to true,
 	 * otherwise send an error message
 	 */
-	if(validateUsername($_POST['username']))
+	if(validateUsername($username) === true)
 	{
-		/*
-		 * SQL processing here
-		 */
-		echo('succes username <br>');
+		$usernameValidate = true;
 	}
 	else
 	{
-		$invalidUsernameErr = $invalidUsernameErrMsg;
+		header('Location: ../register.php?usernameErr=true');
+		exit;
 	}
 
 	/*
-	 * Check whether it is a valid email and process it,
+	 * Check whether it is a valid email and assign a variable to true,
 	 * otherwise send an error message
 	 */
-	if(validateEmail($_POST['email']))
+	if(validateEmail($email) === true)
 	{
-		/*
-		 * SQL processing here
-		 */
-		echo('succes email <br>');
+		$emailValidate = true;
 	} 
 	else 
 	{
-		$invalidEmailErr =$invalidEmailErrMsg;
+		header('Location: ../register.php?emailErr=true');
+		exit;
 	}
 	
 	/*
 	 *  Check password length,
 	 *  otherwise send an error message
 	 */
-	if(validatePassword($_POST['password'], $_POST['confirmPassword']) === 'lengthErr') 
+	if(validatePassword($password, $confirmPassword) === 'passLengthErr') 
 	{
-		$passwordLengthErr = $passwordLengthErrMsg;
+		header('Location: ../register.php?passLengthErr=true');
+		exit;
 	} 
 	
 	/*
 	 *  Check if the password and confirmation are the same,
 	 *  otherwise send an error message
 	 */
-	else if(validatePassword($_POST['password'], $_POST['confirmPassword']) === 'diffErr')
+	else if(validatePassword($password, $confirmPassword) === 'passDiffErr')
 	{
-		$passwordDiffErr = $passwordDiffErrMsg; 
+		header('Location: ../register.php?passDiffErr=true');
+		exit; 
 	} 
-	// If it passes validation process the password
-	else if(validatePassword($_POST['password'], $_POST['confirmPassword']))
+	// If it passes validation assign a variable to true,
+	else if(validatePassword($password, $confirmPassword) === true)
 	{
-		/*
-		 * Salting and hashing here 
-		 *
-		 * SQL processing here
-		 */
-		echo('succes password');
+		$passValidate = true;
 	}
 }
-?>
+else
+{
+	/*
+	 * If no data has been send over post send user to register page,
+	 * to prevent people from calling this script without sending data.
+	 */
+	 header('Location: ../register.php');
+}
+
+if($usernameValidate && $emailValidate && $passValidate)
+{
+	/*
+	 * Process users data and send user to register page, 
+	 * with succes message.
+	 */
+	header('Location: ../register.php?succes=true');
+}
+

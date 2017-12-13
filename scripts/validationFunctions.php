@@ -3,26 +3,26 @@
 function validateUsername($username)
 {
 	// Validate username using regex and return true or false
-	if(preg_match('/^\w{4,127}$/', $username))
+	if(!preg_match('/^\w{4,127}$/', $username))
 	{
-		return true;
+		return 'usernameErr';
 	}
 	else 
 	{
-		return false;
+		return true;
 	}
 }
 
 function validateEmail($email)
 {
 	// Validate email using built in email validation and return true or false
-	if(filter_var($email, FILTER_VALIDATE_EMAIL))
+	if(empty(filter_var($email, FILTER_VALIDATE_EMAIL)))
 	{
-		return true;
+		return 'emailErr';
 	}
 	else
 	{
-		return false;
+		return true;
 	}
 }
 
@@ -34,7 +34,7 @@ function validatePassword($password, $confirmPassword)
 	 */
 	if((strlen($password) > 255) or (strlen($password) < 4))
 	{
-		return 'lengthErr';
+		return 'passLengthErr';
 	}
 	/*
 	 * Check whether the password and confirmation are the same,
@@ -42,7 +42,7 @@ function validatePassword($password, $confirmPassword)
 	 */
 	if($password !== $confirmPassword)
 	{
-		return 'diffErr';
+		return 'passDiffErr';
 	}
 	// If it passes the tests return true
 	else

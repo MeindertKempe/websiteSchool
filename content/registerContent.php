@@ -1,15 +1,32 @@
-<?php
-include('scripts/registerScript.php')
-?>
 <h1 class="h1">Register</h1>
 <br>
+<?php
+// Define error messages
+$usernameErrMsg = '<p class="errorMsg">Kies een Gebruikersnaam tussen de 4 en 127 karakters en gebruik alleen letters en cijfers.</p>';
+$emailErrMsg = '<p class="errorMsg">Geef een gelig email adres op.</p>';
+$passDiffErrMsg = '<p class="errorMsg">Geef twee keer het zelfde wachtwoord op.</p>';
+$passLengthErrMsg = '<p class="errorMsg">Kies een wachtwoord tussen de 4 en 255 karakters.</p>';
 
-<?=$invalidUsernameErr;?>
-<?=$invalidEmailErr;?>
-<?=$passwordLengthErr;?>
-<?=$passwordDiffErr;?>
+if(filter_input(INPUT_GET, 'usernameErr', FILTER_SANITIZE_URL) === 'true')
+{
+	echo($usernameErrMsg);
+}
+if(filter_input(INPUT_GET, 'emailErr', FILTER_SANITIZE_URL) === 'true')
+{
+	echo($emailErrMsg);
+}
+if(filter_input(INPUT_GET, 'passDiffErr', FILTER_SANITIZE_URL) === 'true')
+{
+	echo($passDiffErrMsg);
+}
+if(filter_input(INPUT_GET, 'passLengthErr', FILTER_SANITIZE_URL) === 'true')
+{
+	echo($passLengthErrMsg);
+}
 
-<form action="<?php filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL)?>" method="post">
+?>
+
+<form action="scripts/registerScript.php" method="post">
 	<label class="loginText" for="username">Username:</label>
 	<input id="username" class="loginField" type="text" name="username" maxlength="127" minlength="4" 
 		value="<?php
