@@ -1,6 +1,6 @@
 <!doctype html>
-<html>
-<head lang="nl">
+<html lang="nl">
+<head>
 	<?php
 	include('resources/head.php')
 	?>
