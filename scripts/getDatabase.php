@@ -1,6 +1,6 @@
 <?php
 
-function getDatabase($dbName, $include)
+function getDatabase($hostname, $dbName)
 {
 
 /*
@@ -8,10 +8,11 @@ function getDatabase($dbName, $include)
  */
 
 	// Include file in which $username and $password are declared
-	include($include);
+	chdir('../')
+	include('config/getLoginData');
 	
 	// Connect to a mySQL database and return it
-	return mysqli_connect('localhost', $username, $password, $dbName);
+	return mysqli_connect($hostname, $username, $password, $dbName);
 }
 
 ?>
