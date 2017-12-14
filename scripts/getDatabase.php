@@ -8,8 +8,7 @@ function getDatabase($hostname, $dbName)
  */
 
 	// Include file in which $username and $password are declared
-	chdir('../');
-	include('config/getLoginData');
+	include('../config/getLoginData.php');
 	
 	// Connect to a mySQL database and return it
 	return mysqli_connect($hostname, $username, $password, $dbName);
