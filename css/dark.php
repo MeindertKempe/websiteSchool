@@ -75,7 +75,7 @@ $green = "#008000"
 	border-color: <?=$green;?>;
 }
 
-.downloadButton:hover {
+.downloadButton:hover, .loginButton:hover {
 	background-color: #080808;
 }
 
