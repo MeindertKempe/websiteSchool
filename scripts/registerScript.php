@@ -1,8 +1,9 @@
 <?php
 
 // Require necessary files
-require('validationFunctions.php');
-require('getDatabase.php');
+require_once('../config/databaseName.php');
+require_once('validationFunctions.php');
+require_once('getDatabase.php');
 
 // Declare error variables
 $usernameErr = $emailErr = $passDiffErr = $passLengthErr = '';
@@ -86,8 +87,14 @@ else
 if($usernameValidate && $emailValidate && $passValidate)
 {
 	// Declare hostname and database variables
-	$hostname = 'localhost';
-	$database = 'MeindertK_users';
+	$hostname = $userDBHost;
+	$database = $userDB;
+	$userTable = $userDBuserTab;
+	$usernameColumn = $userDBuserTabUsernameCol;
+	$emailColumn = $userDBuserTabEmailCol;
+	$passHashColumn = $userDBuserTabPassHashCol;
+	$saltColumn = $userDBuserTabSaltCol;
+	$roundsColumn = $userDBuserTabRoundsCol;
 	
 	/*
 	 * Process users data and send user to register page, 
@@ -112,7 +119,10 @@ if($usernameValidate && $emailValidate && $passValidate)
 	$passHash = crypt($password, '$6$rounds=' . $rounds . '$' . $salt . '$');
 	
 	// Send user info to database
-	mysqli_query($db, "INSERT INTO users (username, email, password_hash, salt, rounds) VALUES ('$username', '$email', '$passHash', '$salt', '$rounds')");
+	mysqli_query($db, "INSERT INTO $userTable "
+			. "($userDBuserTabUsernameCol, $userDBuserTabEmailCol, "
+			. "$userDBuserTabPassHashCol, $userDBuserTabSaltCol, $userDBuserTabRoundsCol)"
+			. " VALUES ('$username', '$email', '$passHash', '$salt', '$rounds')");
 	
 	// Send user back to register page with succes message
 	header('Location: ../register.php?succes=true');
