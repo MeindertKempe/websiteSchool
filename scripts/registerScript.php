@@ -2,6 +2,7 @@
 
 // Require necessary files
 require('validationFunctions.php');
+require('getDatabase.php');
 
 // Declare error variables
 $usernameErr = $emailErr = $passDiffErr = $passLengthErr = '';
@@ -79,15 +80,40 @@ else
 	 * If no data has been send over post send user to register page,
 	 * to prevent people from calling this script without sending data.
 	 */
-	 header('Location: ../register.php');
+	header('Location: ../register.php');
 }
 
 if($usernameValidate && $emailValidate && $passValidate)
 {
+	// Declare hostname and database variables
+	$hostname = 'localhost';
+	$database = 'MeindertK_users';
+	
 	/*
 	 * Process users data and send user to register page, 
 	 * with succes message.
 	 */
+	 
+	 
+	// Declare database
+	$db = getDatabase($hostname, $database);
+	
+	// Escape data to be inserted into sql database
+	$username = mysqli_real_escape_string($db, $username);
+	$email = mysqli_real_escape_string($db, $email);
+	
+	// Generate salt
+	$salt  = base64_encode(openssl_random_pseudo_bytes(16));
+	
+	// Set number of rounds for crypt to use
+	$rounds = 10000;
+	
+	// Generate hash using crypt
+	$passHash = crypt($password, '$6$rounds=' . $rounds . '$' . $salt . '$');
+	
+	// Send user info to database
+	mysqli_query($db, "INSERT INTO users (username, email, password_hash, salt, rounds) VALUES ('$username', '$email', '$passHash', '$salt', '$rounds')");
+	
+	// Send user back to register page with succes message
 	header('Location: ../register.php?succes=true');
 }
-
