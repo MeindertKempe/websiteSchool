@@ -26,10 +26,10 @@ $roundsColumn = $userDBuserTabRoundsCol;
 $db = getDatabase($hostname, $database);
 
 // Check whether the server received anything via POST
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if($_SERVER['REQUEST_METHOD'] == 'POST') 
+{
 	
 	// Assign POST data to variables
-	
 	$username = $_POST['username'];
 	$email = $_POST['email'];
 	$password = $_POST['password'];
