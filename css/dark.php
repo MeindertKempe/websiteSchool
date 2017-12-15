@@ -82,3 +82,7 @@ $green = "#008000"
 .defaultImg {
 	border-color: #1a1a1a;
 }
+
+.errorMsg {
+	color: #bb0000;
+}
