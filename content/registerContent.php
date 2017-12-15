@@ -27,8 +27,8 @@ if(filter_input(INPUT_GET, 'passLengthErr', FILTER_SANITIZE_URL) === 'true')
 ?>
 
 <form action="scripts/registerScript.php" method="post">
-	<label class="loginText" for="username">Username:</label>
-	<input id="username" class="loginField" type="text" name="username" maxlength="127" minlength="4" 
+	<label class="loginText" for="username">Username:</label><!--
+	--><input id="username" class="loginField" type="text" name="username" maxlength="127" minlength="4" 
 		value="<?php
 		/* 
 		 * Check whether the $_POST['username'] variable exists,
@@ -43,8 +43,8 @@ if(filter_input(INPUT_GET, 'passLengthErr', FILTER_SANITIZE_URL) === 'true')
 		?>">
 	<br>
 	
-	<label class="loginText" for="email">Email:</label>
-	<input id="email" class="loginField" type="email" name="email" 
+	<label class="loginText" for="email">Email:</label><!--
+	--><input id="email" class="loginField" type="email" name="email" 
 		value="<?php
 		/* 
 		 * Check whether the $_POST['email'] variable exists,
