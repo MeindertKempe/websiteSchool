@@ -25,7 +25,8 @@ else
 				<input id="password" class="loginField" type="password" name="password" required 
 					   placeholder="Wachtwoord"><br>
 				<input class="loginButton" type="submit" value="login">
-			</form>');
+			</form>
+			<a href="register.php">Or Register</a>');
 }
 
 ?>

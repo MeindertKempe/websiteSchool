@@ -1,4 +1,11 @@
 <?php
+
+// Start session
 session_start();
-session_destroy();
-header('Location: ../login.php');
+
+// Unset login session
+unset($_SESSION['username']);
+unset($_SESSION['email']);
+
+// Send user back with confirm logout message
+header('Location: ' . $_SESSION['currentPage'] . '?logout=true');

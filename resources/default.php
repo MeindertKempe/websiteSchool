@@ -2,7 +2,13 @@
 <html lang="nl">
 <head>
 	<?php
-	include('resources/head.php')
+	include('resources/head.php');
+	
+	// Start session for rest of page
+	session_start();
+	
+	// Save current page in session
+	$_SESSION['currentPage'] = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL);
 	?>
 </head>
 <body onload="setTheme()">
@@ -10,6 +16,11 @@
 		<div id="Menu" class="box">
 			<?php
 			include('resources/menu.php');
+			?>
+		</div>
+		<div id="loginMenu" class="box">
+			<?php
+			include('resources/loginMenu.php');
 			?>
 		</div>
 		<section id="content" class="box">

@@ -53,6 +53,14 @@ a {
 	overflow: hidden;
 }
 
+#loginMenu {
+	position: fixed;
+	left: 0;
+	top: 65vh;
+	width: 19vw;
+	min-height: 10vh;
+}
+
 #content {
 	padding: 2%;
 	float: right;
@@ -186,21 +194,38 @@ h3 {
 	width: 15%;
 }
 
-.loginField {
+.loginField, .registerField {
 	height: 1.5em;
-	width: 25%;
 	border-style: solid;
 	border-radius: 3px;
 	margin-top: 1px;
 	margin-bottom: 1px;
 }
 
-.loginButton {
+.registerField {
+	width: 45%;
+}
+
+.loginField {
+	width: 90%;
+}
+
+.loginButton, .registerButton {
 	margin-top: 3px;
-	width: 10%;
+	margin-bottom: 3px;
 	height: 1.5em;
 	border-style: solid;
 	border-radius: 3px;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+.registerButton {
+	min-width: 10%;
+}
+
+.loginButton {
+	width: 70%;
 }
 
 #footer {
