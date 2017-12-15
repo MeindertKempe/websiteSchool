@@ -191,10 +191,12 @@ h3 {
 	width: 25%;
 	border-style: solid;
 	border-radius: 3px;
+	margin-top: 1px;
+	margin-bottom: 1px;
 }
 
 .loginButton {
-	margin-top: 0.5%;
+	margin-top: 3px;
 	width: 10%;
 	height: 1.5em;
 	border-style: solid;

@@ -37,21 +37,20 @@ if(filter_input(INPUT_GET, 'passLengthErr', FILTER_SANITIZE_URL) === 'true')
 ?>
 
 <form action="scripts/registerScript.php" method="post">
-	<label class="loginText" for="username">Gebruikersnaam:</label><!--
-	--><input id="username" class="loginField" type="text" name="username" maxlength="127" minlength="4">
+	<input id="username" class="loginField" type="text" name="username" maxlength="127" 
+			  minlength="4" required placeholder="Gebruikersnaam">
 	<br>
 	
-	<label class="loginText" for="email">Email:</label><!--
-	--><input id="email" class="loginField" type="email" name="email">
+	<input id="email" class="loginField" type="email" name="email" required placeholder="Email">
 	<br>
 	
-	<label class="loginText" for="password">Wachtwoord:</label><!--
-	--><input id="password" class="loginField" type="password" name="password"
-		maxlength="255" minlength="4"><br>
+	<input id="password" class="loginField" type="password" name="password"
+			  maxlength="255" minlength="4"required placeholder="Wachtwoord">
+	<br>
 	
-	<label class="loginText" for="confirmPassword">Bevestig Wachtwoord:</label><!--
-	--><input id="confirmPassword" class="loginField" type="password" name="confirmPassword"
-		maxlength="255" minlength="4"><br>
+	<input id="confirmPassword" class="loginField" type="password" name="confirmPassword"
+			  maxlength="255" minlength="4" required placeholder="Bevestig Wachtwoord">
+	<br>
 	
 	<input class="loginButton" type="submit" value="register">
 </form>
