@@ -38,7 +38,7 @@ function validateEmail($email, $db, $userTable, $emailColumn)
 	{
 		return 'emailTakenErr';
 	}
-	else if(empty(filter_var($email, FILTER_VALIDATE_EMAIL)))
+	else if(filter_var($email, FILTER_VALIDATE_EMAIL) == null)
 	{
 		return 'emailErr';
 	}
