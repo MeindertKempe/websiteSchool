@@ -28,35 +28,11 @@ if(filter_input(INPUT_GET, 'passLengthErr', FILTER_SANITIZE_URL) === 'true')
 
 <form action="scripts/registerScript.php" method="post">
 	<label class="loginText" for="username">Username:</label><!--
-	--><input id="username" class="loginField" type="text" name="username" maxlength="127" minlength="4" 
-		value="<?php
-		/* 
-		 * Check whether the $_POST['username'] variable exists,
-		 * if it does echo it to the value attribute.
-		 * This way the box retains the value when the user submits
-		 * and it returns a error.
-		 */
-		if(!empty($_POST['username']))
-		{
-			echo($_POST['username']);
-		}
-		?>">
+	--><input id="username" class="loginField" type="text" name="username" maxlength="127" minlength="4">
 	<br>
 	
 	<label class="loginText" for="email">Email:</label><!--
-	--><input id="email" class="loginField" type="email" name="email" 
-		value="<?php
-		/* 
-		 * Check whether the $_POST['email'] variable exists,
-		 * if it does echo it to the value attribute.
-		 * This way the box retains the value when the user submits
-		 * and it returns a error.
-		 */
-		if(!empty($_POST['email']))
-		{
-			echo($_POST['email']);
-		}
-	   ?>">
+	--><input id="email" class="loginField" type="email" name="email">
 	<br>
 	
 	<label class="loginText" for="password">Password:</label><!--
