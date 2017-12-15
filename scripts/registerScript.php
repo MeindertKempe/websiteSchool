@@ -12,6 +12,19 @@ $usernameErr = $emailErr = $passDiffErr = $passLengthErr = '';
 
 $usernameValidate = $emailValidate = $passValidate = false;
 
+// Declare database variables
+$hostname = $userDBHost;
+$database = $userDB;
+$userTable = $userDBuserTab;
+$usernameColumn = $userDBuserTabUsernameCol;
+$emailColumn = $userDBuserTabEmailCol;
+$passHashColumn = $userDBuserTabPassHashCol;
+$saltColumn = $userDBuserTabSaltCol;
+$roundsColumn = $userDBuserTabRoundsCol;
+
+// Set database to variable
+$db = getDatabase($hostname, $database);
+
 // Check whether the server received anything via POST
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
@@ -26,9 +39,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	 * Check whether it passes username requirements and assign a variable to true,
 	 * otherwise send an error message
 	 */
-	if(validateUsername($username) === true)
+	if(validateUsername($username, $db, $userTable, $usernameColumn) === true)
 	{
 		$usernameValidate = true;
+	}
+	else if(validateUsername($username, $db, $userTable, $usernameColumn) === 'usernameTakenErr')
+	{
+		header('Location: ../register.php?usernameTakenErr=true');
+		exit;
 	}
 	else
 	{
@@ -40,10 +58,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	 * Check whether it is a valid email and assign a variable to true,
 	 * otherwise send an error message
 	 */
-	if(validateEmail($email) === true)
+	if(validateEmail($email, $db, $userTable, $emailColumn) === true)
 	{
 		$emailValidate = true;
 	} 
+	else if(validateEmail($email, $db, $userTable, $emailColumn) === 'emailTakenErr')
+	{
+		header('Location: ../register.php?emailTakenErr=true');
+		exit;
+	}
 	else 
 	{
 		header('Location: ../register.php?emailErr=true');
@@ -86,24 +109,11 @@ else
 
 if($usernameValidate && $emailValidate && $passValidate)
 {
-	// Declare hostname and database variables
-	$hostname = $userDBHost;
-	$database = $userDB;
-	$userTable = $userDBuserTab;
-	$usernameColumn = $userDBuserTabUsernameCol;
-	$emailColumn = $userDBuserTabEmailCol;
-	$passHashColumn = $userDBuserTabPassHashCol;
-	$saltColumn = $userDBuserTabSaltCol;
-	$roundsColumn = $userDBuserTabRoundsCol;
 	
 	/*
 	 * Process users data and send user to register page, 
 	 * with succes message.
 	 */
-	 
-	 
-	// Declare database
-	$db = getDatabase($hostname, $database);
 	
 	// Escape data to be inserted into sql database
 	$username = mysqli_real_escape_string($db, $username);

@@ -1,9 +1,20 @@
 <?php
 
-function validateUsername($username)
+function validateUsername($username, $db, $userTable, $userColumn)
 {
+	// Escape input
+	$username = mysqli_real_escape_string($db, $username);
+	
+	// Get number of username valuables in database that equal username input
+	$result = mysqli_query($db, "SELECT * FROM $userTable WHERE $userColumn='$username'");
+	$resultRows = mysqli_num_rows($result);
+	
 	// Validate username using regex and return true or false
-	if(!preg_match('/^\w{4,127}$/', $username))
+	if($resultRows !== 0)
+	{
+		return 'usernameTakenErr';
+	}
+	else if(!preg_match('/^\w{4,127}$/', $username))
 	{
 		return 'usernameErr';
 	}
@@ -13,10 +24,21 @@ function validateUsername($username)
 	}
 }
 
-function validateEmail($email)
+function validateEmail($email, $db, $userTable, $emailColumn)
 {
+	// Escape input
+	$email = mysqli_real_escape_string($db, $email);
+	
+	// Get number of email valuables in database that equal email input
+	$result = mysqli_query($db, "SELECT * FROM $userTable WHERE $emailColumn='$email'");
+	$resultRows = mysqli_num_rows($result);
+	
 	// Validate email using built in email validation and return true or false
-	if(empty(filter_var($email, FILTER_VALIDATE_EMAIL)))
+	if($resultRows !== 0 )
+	{
+		return 'emailTakenErr';
+	}
+	else if(empty(filter_var($email, FILTER_VALIDATE_EMAIL)))
 	{
 		return 'emailErr';
 	}
@@ -50,5 +72,3 @@ function validatePassword($password, $confirmPassword)
 		return true;
 	}
 }
-
-?>
