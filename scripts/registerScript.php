@@ -6,10 +6,10 @@ require_once('validationFunctions.php');
 require_once('getDatabase.php');
 
 // Declare error variables
-$usernameErr = $emailErr = $passDiffErr = $passLengthErr = '';
+$passDiffErr = $passLengthErr = $emailErr = $emailTakenErr = $usernameErr = $usernameTakenErr = false;
+$passDiffErrMsg = $passLengthErrMsg = $emailErrMsg = $emailTakenErrMsg = $usernameErrMsg = $usernameTakenErrMsg = '';
 
 // Declare variables which indicate validation state
-
 $usernameValidate = $emailValidate = $passValidate = false;
 
 // Declare database variables
@@ -45,13 +45,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 	else if(validateUsername($username, $db, $userTable, $usernameColumn) === 'usernameTakenErr')
 	{
-		header('Location: ../register.php?usernameTakenErr=true');
-		exit;
+		$usernameTakenErr = true;
 	}
 	else
 	{
-		header('Location: ../register.php?usernameErr=true');
-		exit;
+		$usernameErr = true;
 	}
 
 	/*
@@ -64,13 +62,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	} 
 	else if(validateEmail($email, $db, $userTable, $emailColumn) === 'emailTakenErr')
 	{
-		header('Location: ../register.php?emailTakenErr=true');
-		exit;
+		$emailTakenErr = true;
 	}
 	else 
 	{
-		header('Location: ../register.php?emailErr=true');
-		exit;
+		$emailErr = true;
 	}
 	
 	/*
@@ -79,18 +75,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	 */
 	if(validatePassword($password, $confirmPassword) === 'passLengthErr') 
 	{
-		header('Location: ../register.php?passLengthErr=true');
-		exit;
+		$passLengthErr = true;
 	} 
-	
 	/*
 	 *  Check if the password and confirmation are the same,
 	 *  otherwise send an error message
 	 */
 	else if(validatePassword($password, $confirmPassword) === 'passDiffErr')
 	{
-		header('Location: ../register.php?passDiffErr=true');
-		exit; 
+		$passDiffErr = true;
 	} 
 	// If it passes validation assign a variable to true,
 	else if(validatePassword($password, $confirmPassword) === true)
@@ -105,6 +98,38 @@ else
 	 * to prevent people from calling this script without sending data.
 	 */
 	header('Location: ../register.php');
+}
+
+// Check for errors, if so send user back with messages and exit the program
+if($passDiffErr || $passLengthErr || $emailErr || $emailTakenErr || $usernameErr || $usernameTakenErr)
+{
+	if($passDiffErr)
+	{
+		$passDiffErrMsg = '&passDiffErr=true';
+	}
+	if($passLengthErr)
+	{
+		$passLengthErrMsg = '&passLengthErr=true';
+	}
+	if($emailErr)
+	{
+		$emailErrMsg = '&emailErr=true';
+	}
+	if($emailTakenErr)
+	{
+		$emailTakenErrMsg = '&emailTakenErr=true';
+	}
+	if($usernameErr)
+	{
+		$usernameErrMsg = '&usernameErr=true';
+	}
+	if($usernameTakenErr)
+	{
+		$usernameTakenErrMsg = '&usernameTakenErr=true';
+	}
+	header('Location: ../register.php?' . 'error=true' . $passDiffErrMsg . $passLengthErrMsg . 
+			$emailErrMsg . $emailTakenErrMsg . $usernameErrMsg . $usernameTakenErrMsg);
+	exit;
 }
 
 if($usernameValidate && $emailValidate && $passValidate)
