@@ -44,7 +44,7 @@ a {
 	margin-top: 2vh;
 }
 
-#Menu {
+#menu {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -194,7 +194,7 @@ h3 {
 	width: 15%;
 }
 
-.loginField, .registerField {
+.loginField, .registerField, .field {
 	height: 1.5em;
 	border-style: solid;
 	border-radius: 3px;
@@ -210,7 +210,7 @@ h3 {
 	width: 90%;
 }
 
-.loginButton, .registerButton {
+.loginButton, .registerButton, .button {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	height: 1.5em;

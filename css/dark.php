@@ -69,13 +69,13 @@ $green = "#008000"
 	color: #606060;
 }
 
-.downloadButton, .loginButton, .registerButton, .loginField, .registerField {
+.downloadButton, .loginButton, .registerButton, .loginField, .registerField, .field, .button {
 	color: <?=$green;?>;
 	background-color: #101010;
 	border-color: <?=$green;?>;
 }
 
-.downloadButton:hover, .loginButton:hover, .registerButton:hover {
+.downloadButton:hover, .loginButton:hover, .registerButton:hover, .button:hover {
 	background-color: #080808;
 }
 
