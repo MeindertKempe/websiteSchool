@@ -91,3 +91,7 @@ $green = "#008000;"
 .errorMsg {
 	color: #bb0000;
 }
+
+.table, .table thead tr th , .table tfoot tr td, .table tbody tr td {
+	border-color: <?=$green;?>;
+}

@@ -253,3 +253,22 @@ h3 {
 	border-radius: 3px;
 	margin-bottom: 3%;
 }
+
+.averagesField {
+	width: 45%;
+}
+
+.resultTab, .wantedTab {
+	width: 100%;
+	padding: 0;
+}
+.table, .table thead tr th , .table tfoot tr td, .table tbody tr td {
+	border-width: 1px; 
+	border-style: solid;
+	margin: 0;
+	border-collapse: collapse;
+}
+
+.subjectCol {
+	width: 80%;
+}
