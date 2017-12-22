@@ -9,7 +9,7 @@
 		  placeholder="Achtergrond Kleur" oninput="changeColor('backgroundColor')">
 <br>
 <input id="textColor" class="field" type="text" name="textColor"
-		  placeholder="Text Kleur" oninput="changeColor('textColor')">
+		  placeholder="Tekst Kleur" oninput="changeColor('textColor')">
 <br>
 <br>
 

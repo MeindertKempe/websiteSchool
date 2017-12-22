@@ -32,6 +32,6 @@ else
 					   placeholder="Wachtwoord"><br>
 				<input class="loginButton" type="submit" value="login">
 			</form>
-			<a href="register.php">Or Register</a>');
+			<a href="register.php">Of registreer</a>');
 }
 
