@@ -44,7 +44,7 @@ a {
 	margin-top: 2vh;
 }
 
-#Menu {
+#menu {
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -194,7 +194,7 @@ h3 {
 	width: 15%;
 }
 
-.loginField, .registerField {
+.loginField, .registerField, .field {
 	height: 1.5em;
 	border-style: solid;
 	border-radius: 3px;
@@ -210,7 +210,7 @@ h3 {
 	width: 90%;
 }
 
-.loginButton, .registerButton {
+.loginButton, .registerButton, .button {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	height: 1.5em;
@@ -240,4 +240,35 @@ h3 {
 	position: inherit;
 	margin: 5%;
 	font-size: 0.8em;
+}
+
+.articleButton {
+	display: flex;
+	width: 100%;
+	height: 5em;
+	align-items: center;
+	justify-content: center;
+	font-size: 3em;
+	border-style: solid;
+	border-radius: 3px;
+	margin-bottom: 3%;
+}
+
+.averagesField {
+	width: 45%;
+}
+
+.resultTab, .wantedTab {
+	width: 100%;
+	padding: 0;
+}
+.table, .table thead tr th , .table tfoot tr td, .table tbody tr td {
+	border-width: 1px; 
+	border-style: solid;
+	margin: 0;
+	border-collapse: collapse;
+}
+
+.subjectCol {
+	width: 80%;
 }

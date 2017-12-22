@@ -13,7 +13,7 @@
 </head>
 <body onload="setTheme()">
 	<div id="wrapper">
-		<div id="Menu" class="box">
+		<div id="menu" class="box">
 			<?php
 			include('resources/menu.php');
 			?>
