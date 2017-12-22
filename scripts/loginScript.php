@@ -4,7 +4,7 @@
 session_start();
 
 // Require neccesary files
-require_once('../config/databaseName.php');
+require_once('../config/userDBName.php');
 require_once('getDatabase.php');
 
 // Declare database variables

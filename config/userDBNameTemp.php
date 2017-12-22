@@ -2,7 +2,7 @@
 
 /*
  * Change these to the proper values for you user
- * database and rename this file to databaseName.php
+ * database and rename this file to userDBName.php
  */
 $userDB = 'user_db';
 $userDBHost = 'localhost';

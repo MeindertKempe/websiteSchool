@@ -1,7 +1,7 @@
 <?php
 
 // Require necessary files
-require_once('../config/databaseName.php');
+require_once('../config/userDBName.php');
 require_once('validationFunctions.php');
 require_once('getDatabase.php');
 
