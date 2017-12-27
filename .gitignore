@@ -1,2 +1,3 @@
 /config/getLoginData.php
 /config/userDBName.php
+/config/commentDBName.php
