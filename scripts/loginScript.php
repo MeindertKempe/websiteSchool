@@ -41,6 +41,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	}
 	else
 	{
+		// Set variable to remember username
+		$_SESSION['usernameField'] = $username;
+		
 		// Send user back with error message
 		header('Location: ' . $_SESSION['currentPage'] . '?login=false');
 	}

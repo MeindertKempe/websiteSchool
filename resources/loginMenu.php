@@ -27,7 +27,15 @@ else
 	
 	echo('	<form action="scripts/loginScript.php" method="post">
 				<input id="username" class="loginField" type="text" name="username" required 
-					   placeholder="Gebruikersnaam"><br>
+					   placeholder="Gebruikersnaam"');
+	
+	if(isset($_SESSION['usernameField']))
+	{
+		echo(' value="' . $_SESSION['usernameField'] . '"');
+		unset($_SESSION['usernameField']);
+	}
+	
+	echo('><br>
 				<input id="password" class="loginField" type="password" name="password" required 
 					   placeholder="Wachtwoord"><br>
 				<input class="loginButton" type="submit" value="login">
