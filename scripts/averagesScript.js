@@ -115,13 +115,13 @@ function needInfo(){
 	} else if(inWantedNum.value <= 0 && inWantedNum.value !== ""){
 		needNum.innerHTML = "Niet mogelijk";
 	}  else {
-		// If number of numbers is empty set to 0 else set to input value
+		// If number of numbers is empty set to 1 else set to input value
 		if(inWantedNum.value === ""){
 			var inWantedNumTemp = 1;
 		} else {
 			var inWantedNumTemp = Number(inWantedNum.value);
 		}
-
+		// Calculate and set needNum
 		newTot = Number(wantedNum.value) * (totalNum + inWantedNumTemp);
 		newTot -= total;
 		needNum.innerHTML = newTot/inWantedNumTemp;
