@@ -202,12 +202,31 @@ h3 {
 	margin-bottom: 1px;
 }
 
+.commentField {
+	width: 100%;
+	height: 10em;
+	margin-top: 0;
+}
+
+.commentTitleField {
+	width: 100%;
+	height: 1.5em;
+	margin-bottom: 0;
+}
+
 .registerField {
 	width: 45%;
+	height: 1.5em;
 }
 
 .loginField {
 	width: 90%;
+	height: 1.5em;
+}
+
+.averagesField {
+	width: 45%;
+	height: 1.5em;
 }
 
 .loginButton, .registerButton, .button {
@@ -252,10 +271,6 @@ h3 {
 	border-style: solid;
 	border-radius: 3px;
 	margin-bottom: 3%;
-}
-
-.averagesField {
-	width: 45%;
 }
 
 .resultTab, .wantedTab {
