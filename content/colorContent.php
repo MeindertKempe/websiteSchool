@@ -2,7 +2,9 @@
 <h1 class="h1">Verander Kleur</h1>
 <br>
 <p>
-	Voer een hexadecimale kleur in en de kleur op de pagina wordt veranderd.
+	Voer een css kleur in en de kleur op de pagina wordt veranderd.<br>
+	Zie de <a href="https://www.w3schools.com/cssref/css_colors_legal.asp">w3schools pagina</a> voor de mogelijke manieren om kleur aan te geven in css.<br>
+	Kleuren kunnen bijvoorbeeld aangegeven worden door de naam (zoals "red" of "blue"), of door hexadecimale notatie (#00ff00).
 </p>
 <br>
 <input id="backgroundColor" class="field" type="text" name="backgroundColor"
