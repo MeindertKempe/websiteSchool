@@ -195,7 +195,6 @@ h3 {
 }
 
 .loginField, .registerField, .field {
-	height: 1.5em;
 	border-style: solid;
 	border-radius: 3px;
 	margin-top: 1px;
@@ -225,6 +224,11 @@ h3 {
 }
 
 .averagesField {
+	width: 45%;
+	height: 1.5em;
+}
+
+.colorField {
 	width: 45%;
 	height: 1.5em;
 }
@@ -286,4 +290,8 @@ h3 {
 
 .subjectCol {
 	width: 80%;
+}
+
+.hashForm {
+	margin-top: 25%;
 }

@@ -7,10 +7,10 @@
 	Kleuren kunnen bijvoorbeeld aangegeven worden door de naam (zoals "red" of "blue"), of door hexadecimale notatie (#00ff00).
 </p>
 <br>
-<input id="backgroundColor" class="field" type="text" name="backgroundColor"
+<input id="backgroundColor" class="field colorField" type="text" name="backgroundColor"
 		  placeholder="Achtergrond Kleur" oninput="changeColor('backgroundColor')">
 <br>
-<input id="textColor" class="field" type="text" name="textColor"
+<input id="textColor" class="field colorField" type="text" name="textColor"
 		  placeholder="Tekst Kleur" oninput="changeColor('textColor')">
 <br>
 <br>
