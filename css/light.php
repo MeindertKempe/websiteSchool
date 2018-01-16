@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/css");
-$green = "#008000;"
+$green = "#008000"
 ?>
 
 /*fix for annoying highlighting in editor*/
@@ -8,6 +8,10 @@ $green = "#008000;"
 /*
 <style>
 /**/
+
+a {
+	color: <?=$green;?>;
+}
 
 #wrapper {
 	background-color: #f0f0f0;

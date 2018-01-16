@@ -24,7 +24,6 @@ html,body {
 }
 
 a {
-	color: green;
 	text-decoration: none;
 }
 

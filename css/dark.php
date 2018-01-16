@@ -9,6 +9,10 @@ $green = "#008000"
 <style>
 /**/
 
+a {
+	color: <?=$green;?>;
+}
+
 #wrapper {
 	background-color: #1a1a1a;
 	color: #f0f0f0;
