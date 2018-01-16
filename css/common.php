@@ -287,6 +287,10 @@ h3 {
 	border-collapse: collapse;
 }
 
+.table thead tr th:empty, .table tfoot tr td:empty, .table tbody tr td:empty {
+	border-width:0px;
+}
+
 .subjectCol {
 	width: 80%;
 }
