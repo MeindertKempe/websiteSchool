@@ -74,14 +74,14 @@ a {
 }
 
 .downloadButton, .loginButton, .registerButton, .loginField, .registerField,
-.field, .button, .articleButton {
+.field, .button, .articleButton, .commentButton, .commentField {
 	color: <?=$green;?>;
 	background-color: #101010;
 	border-color: <?=$green;?>;
 }
 
 .downloadButton:hover, .loginButton:hover, .registerButton:hover, .button:hover,
-.articleButton:hover {
+.articleButton:hover, .commentButton:hover {
 	background-color: #080808;
 }
 

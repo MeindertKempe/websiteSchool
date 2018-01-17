@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Change these to the proper values for you user
+ * Change these to the proper values for you comment
  * database and rename this file to commentDBName.php
  */
 $comDB = 'comment_db';

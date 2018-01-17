@@ -193,7 +193,7 @@ h3 {
 	width: 15%;
 }
 
-.loginField, .registerField, .field {
+.loginField, .registerField, .field, .commentField {
 	border-style: solid;
 	border-radius: 3px;
 	margin-top: 1px;
@@ -232,7 +232,7 @@ h3 {
 	height: 1.5em;
 }
 
-.loginButton, .registerButton, .button {
+.loginButton, .registerButton, .button, .commentButton {
 	margin-top: 3px;
 	margin-bottom: 3px;
 	height: 1.5em;
@@ -297,4 +297,16 @@ h3 {
 
 .hashForm {
 	margin-top: 25%;
+}
+
+.commentForm {
+	
+}
+
+.commentWrapper {
+	text-align: left;
+}
+
+.commentField {
+	width: 90%;
 }
