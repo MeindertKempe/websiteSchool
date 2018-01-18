@@ -193,7 +193,7 @@ h3 {
 	width: 15%;
 }
 
-.loginField, .registerField, .field, .commentField {
+.loginField, .registerField, .field {
 	border-style: solid;
 	border-radius: 3px;
 	margin-top: 1px;
@@ -210,6 +210,7 @@ h3 {
 	width: 100%;
 	height: 1.5em;
 	margin-bottom: 0;
+	border-width: 1px;
 }
 
 .registerField {
@@ -248,6 +249,10 @@ h3 {
 
 .loginButton {
 	width: 70%;
+}
+
+.commentButton {
+	width: 25%;
 }
 
 #footer {
@@ -300,13 +305,10 @@ h3 {
 }
 
 .commentForm {
-	
+	text-align: right;
 }
 
 .commentWrapper {
 	text-align: left;
-}
-
-.commentField {
 	width: 90%;
 }
