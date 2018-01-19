@@ -98,6 +98,7 @@ else
 	 * to prevent people from calling this script without sending data.
 	 */
 	header('Location: ../register.php');
+	exit;
 }
 
 // Check for errors, if so send user back with messages and exit the program
@@ -161,4 +162,5 @@ if($usernameValidate && $emailValidate && $passValidate)
 	
 	// Send user back to register page with succes message
 	header('Location: ../register.php?succes=true');
+	exit;
 }

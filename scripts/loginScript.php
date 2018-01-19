@@ -38,6 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		
 		// Send user back with confirm GET message
 		header('Location: ' . $_SESSION['currentPage'] . '?login=true');
+		exit;
 	}
 	else
 	{
@@ -46,6 +47,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 		
 		// Send user back with error message
 		header('Location: ' . $_SESSION['currentPage'] . '?login=false');
+		exit;
 	}
 	
 }
