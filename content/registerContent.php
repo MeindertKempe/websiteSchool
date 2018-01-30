@@ -1,4 +1,4 @@
-<h1 class="h1">Register</h1>
+<h1 class="h1">Registreer</h1>
 <br>
 <?php
 // Define error messages
