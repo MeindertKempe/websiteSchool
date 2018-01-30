@@ -4,13 +4,3 @@
 <?php
 include('resources/comment.php');
 ?>
-<?php
-/*
-require_once('../config/commentDBName.php');
-require_once('getDatabase.php');
-
-
-
-$db = getDatabase();
- */
-?>
