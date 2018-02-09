@@ -6,32 +6,28 @@
 	<input id="subject1" class="field averagesField" type="text"
 			  placeholder="Vak 1" onchange="updateInfo()">
 	<input id="subjectNum1" class="field averagesField" type="number" step="0.01"
-			  placeholder="Vak 1 Cijfer" onchange="updateInfo()">
-	<br>
-
+			  placeholder="Vak 1 Cijfer" onchange="updateInfo()"><!--
+	--><br>
 	<input id="subject2" class="field averagesField" type="text"
 			  placeholder="Vak 2" onchange="updateInfo()">
 	<input id="subjectNum2" class="field averagesField" type="number" step="0.01"
-			  placeholder="Vak 2 Cijfer" onchange="updateInfo()">
-	<br>
-
+			  placeholder="Vak 2 Cijfer" onchange="updateInfo()"><!--
+	--><br>
 	<input id="subject3" class="field averagesField" type="text" name="subject3"
 			  placeholder="Vak 3" onchange="updateInfo()">
 	<input id="subjectNum3" class="field averagesField" type="number" step="0.01"
-			  placeholder="Vak 3 Cijfer" onchange="updateInfo()">
-	<br>
-
+			  placeholder="Vak 3 Cijfer" onchange="updateInfo()"><!--
+	--><br>
 	<input id="subject4" class="field averagesField" type="text" name="subject4"
 			  placeholder="Vak 4" onchange="updateInfo()">
 	<input id="subjectNum4" class="field averagesField" type="number" step="0.01"
-			  placeholder="Vak 4 Cijfer" onchange="updateInfo()">
-	<br>
-
+			  placeholder="Vak 4 Cijfer" onchange="updateInfo()"><!--
+	--><br>
 	<input id="subject5" class="field averagesField" type="text" name="subject5"
 			  placeholder="Vak 5" onchange="updateInfo()">
 	<input id="subjectNum5" class="field averagesField" type="number" step="0.01"
-			  placeholder="Vak 5 Cijfer" onchange="updateInfo()">
-	<br>
+			  placeholder="Vak 5 Cijfer" onchange="updateInfo()"><!--
+	--><br>
 </div>
 <button class="button" onclick="addSubjectInput()">Meer velden</button>
 
