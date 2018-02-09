@@ -21,13 +21,13 @@ function addSubjectInput(){
 	
 	// Add attributes to elements
 	subject.id = "subject" + subInputCounter;
-	subject.classList = "field averagesField";
+	subject.classList.add("field", "averagesField");
 	subject.type = "text";
 	subject.placeholder = "Vak " + subInputCounter;
 	subject.setAttribute("onchange", "updateInfo()");
 	
 	subjectNum.id = "subjectNum" + subInputCounter;
-	subjectNum.classList = "field averagesField";
+	subjectNum.classList.add("field", "averagesField");
 	subjectNum.type = "number";
 	subjectNum.step = "0.01";
 	subjectNum.placeholder = "Vak " + subInputCounter + " Cijfer";
